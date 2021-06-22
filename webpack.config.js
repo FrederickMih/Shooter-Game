@@ -27,7 +27,7 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, 'src/assets'),
+          from: path.resolve(__dirname, './assets'),
           to: path.resolve(__dirname, 'dist/assets'),
         },
       ],
@@ -37,11 +37,4 @@ module.exports = {
       WEBGL_RENDERER: JSON.stringify(true),
     }),
   ],
-
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-      name: 'common',
-    },
-  },
 };

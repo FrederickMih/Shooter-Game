@@ -1,9 +1,12 @@
-import Phaser from 'phaser';
-import config from './Config/config';// eslint-disable-line
+import 'phaser';
+import config from './Config/config';
+import GameScene from './Scenes/GameScene';
 
-class Game extends Phaser.Game {
+class Game extends Phaser.Game {// eslint-disable-line 
   constructor() {
     super(config);
+    this.scene.add('Game', GameScene);
+    this.scene.start('Game');
   }
 }
 
