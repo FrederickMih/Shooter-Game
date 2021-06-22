@@ -1,3 +1,10 @@
-// import Phaser from 'phaser';
+import Phaser from 'phaser';
+import config from './Config/config';// eslint-disable-line
 
-alert("The shooter game")
+class Game extends Phaser.Game {
+  constructor() {
+    super(config);
+  }
+}
+
+window.game = new Game();
