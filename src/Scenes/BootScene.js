@@ -5,7 +5,9 @@ export default class BootScene extends Phaser.Scene {// eslint-disable-line
     super('Boot');
   }
 
-  // preload() {}
+  preload() {
+    this.load.image('logo', 'assets/zenva_logo.png');
+  }
 
   // create() {}
 }

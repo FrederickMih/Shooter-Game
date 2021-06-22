@@ -7,7 +7,7 @@ import TitleScene from './Scenes/TitleScene';
 import CreditsScene from './Scenes/CreditsScene';
 
 class Game extends Phaser.Game {//eslint-disable-line
-  constructor () {
+  constructor() {
     super(config);
     this.scene.add('Boot', BootScene);
     this.scene.add('Preloader', PreloaderScene);
