@@ -1,1 +1,3 @@
-alert("The shooter game");
+// import Phaser from 'phaser';
+
+alert("The shooter game")
