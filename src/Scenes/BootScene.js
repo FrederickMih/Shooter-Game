@@ -1,12 +1,11 @@
-import Phaser from 'phaser';
+import 'phaser';
 
-class BootScene extends Phaser.Scene {
+export default class BootScene extends Phaser.Scene {// eslint-disable-line 
   constructor() {
     super('Boot');
   }
 
-  create() {
-    this.scene.start('Preloader');
-  }
+  // preload() {}
+
+  // create() {}
 }
-export { BootScene as default };
