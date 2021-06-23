@@ -25,7 +25,9 @@ export default class GameScene extends Phaser.Scene {// eslint-disable-line
       frameWidth: 16,
       frameHeight: 16,
     });
-    this.load.spritesheet('ship', './assets/ship.png', {
+    this.load.image('sprLaserEnemy0', './assets/sprLaserEnemy0.png');
+    this.load.image('sprLaserPlayer', './assets/sprLaserPlayer.png');
+    this.load.spritesheet('sprPlayer', './assets/sprPlayer.png', {
       frameWidth: 16,
       frameHeight: 16,
     });
