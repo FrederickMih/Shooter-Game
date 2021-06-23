@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import Player from '../Entities/Player';
 
 export default class GameScene extends Phaser.Scene {// eslint-disable-line
   constructor() {
@@ -28,8 +29,8 @@ export default class GameScene extends Phaser.Scene {// eslint-disable-line
     this.load.image('sprLaserEnemy0', './assets/sprLaserEnemy0.png');
     this.load.image('sprLaserPlayer', './assets/sprLaserPlayer.png');
     this.load.spritesheet('spaceShip', './assets/spaceShip.png', {
-      frameWidth: 16,
-      frameHeight: 16,
+      frameWidth: 105,
+      frameHeight: 100,
     });
     // sound
   }
@@ -64,25 +65,25 @@ export default class GameScene extends Phaser.Scene {// eslint-disable-line
       repeat: -1,
     });
     // create explotion sound object
-    this.sfx = {
-      explosions: [
-        this.sound.add('sndExplode0'),
-        this.sound.add('sndExplode1'),
-      ],
-      laser: this.sound.add('sndLaser'),
-    };
-    this.backgrounds = [];
-    for (let i = 0; i < 5; i += 1) {
-      const keys = ['skybox', 'solar'];
-      const key = keys[Phaser.Math.Between(0, keys.length - 1)];
-      const bg = new navigateBackground(this, key, i * 10);
-      this.backgrounds.push(bg);
-    }
+    // this.sfx = {
+    //   explosions: [
+    //     this.sound.add('sndExplode0'),
+    //     this.sound.add('sndExplode1'),
+    //   ],
+    //   laser: this.sound.add('sndLaser'),
+    // };
+    // this.backgrounds = [];
+    // for (let i = 0; i < 5; i += 1) {
+    //   const keys = ['skybox', 'solar'];
+    //   const key = keys[Phaser.Math.Between(0, keys.length - 1)];
+    //   const bg = new navigateBackground(this, key, i * 10);
+    //   this.backgrounds.push(bg);
+    // }
     this.player = new Player(
       this,
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
-      'ship',
+      'spaceShip',
     );
     this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
@@ -94,44 +95,44 @@ export default class GameScene extends Phaser.Scene {// eslint-disable-line
     this.enemyLasers = this.add.group();
     this.playerLasers = this.add.group();
 
-    this.time.addEvent({
-      delay: 100,
-      callback() {
-        let enemy = null;
+    // this.time.addEvent({
+    //   delay: 100,
+    //   callback() {
+    //     let enemy = null;
 
-        if (Phaser.Math.Between(0, 10) >= 3) {
-          enemy = new GunShip(
-            this,
-            Phaser.Math.Between(0, this.game.config.width),
-            0,
-          );
-        } else if (Phaser.Math.Between(0, 10) >= 5) {
-          if (this.getEnemiesByType('ChaserShip').length < 5) {
-            enemy = new ChaserShip(
-              this,
-              Phaser.Math.Between(0, this.game.config.width),
-              0,
-            );
-          }
-        } else {
-          enemy = new CarrierShip(
-            this,
-            Phaser.Math.Between(0, this.game.config.width),
-            0,
-          );
-        }
+    //     if (Phaser.Math.Between(0, 10) >= 3) {
+    //       enemy = new GunShip(
+    //         this,
+    //         Phaser.Math.Between(0, this.game.config.width),
+    //         0,
+    //       );
+    //     } else if (Phaser.Math.Between(0, 10) >= 5) {
+    //       if (this.getEnemiesByType('ChaserShip').length < 5) {
+    //         enemy = new ChaserShip(
+    //           this,
+    //           Phaser.Math.Between(0, this.game.config.width),
+    //           0,
+    //         );
+    //       }
+    //     } else {
+    //       enemy = new CarrierShip(
+    //         this,
+    //         Phaser.Math.Between(0, this.game.config.width),
+    //         0,
+    //       );
+    //     }
 
-        if (enemy !== null) {
-          enemy.setScale(Phaser.Math.Between(10, 20) * 0.1);
-          this.enemies.add(enemy);
-        }
-      },
-      callbackScope: this,
-      loop: true,
-    });
+    //     if (enemy !== null) {
+    //       enemy.setScale(Phaser.Math.Between(10, 20) * 0.1);
+    //       this.enemies.add(enemy);
+    //     }
+    //   },
+    //   callbackScope: this,
+    //   loop: true,
+    // });
 
-    const score = 0;
-    const scoreText = this.add.text(16, 16, `Score: ${score}`,
-      { fontSize: '32px', fill: 'black' });
+    // const score = 0;
+    // const scoreText = this.add.text(16, 16, `Score: ${score}`,
+    //   { fontSize: '32px', fill: 'black' });
   }
 }

@@ -7,7 +7,7 @@ export default {
     autoCenter: Phaser.Scale.CENTER_BOTH, // eslint-disable-line
 
     width: 800,
-    height: 600,
+    height: 445,
     backgroundColor: 'black',
   },
   physics: {
