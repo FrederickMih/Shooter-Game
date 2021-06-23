@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 
 export default class GameScene extends Phaser.Scene {// eslint-disable-line
   constructor() {
@@ -74,7 +74,7 @@ export default class GameScene extends Phaser.Scene {// eslint-disable-line
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
       const keys = ['skybox', 'solar'];
-      const key = keys[Phaser.Math.Between(0, keys.length - 1)];//eslint-disable-line
+      const key = keys[Phaser.Math.Between(0, keys.length - 1)];
       const bg = new navigateBackground(this, key, i * 10);
       this.backgrounds.push(bg);
     }
@@ -84,5 +84,10 @@ export default class GameScene extends Phaser.Scene {// eslint-disable-line
       this.game.config.height * 0.5,
       'ship',
     );
+    this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+    this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+    this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+    this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+    this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
   }
 }
