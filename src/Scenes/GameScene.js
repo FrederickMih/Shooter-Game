@@ -63,5 +63,13 @@ export default class GameScene extends Phaser.Scene {// eslint-disable-line
       frameRate: 20,
       repeat: -1,
     });
+    // create explotion sound object
+    this.sfx = {
+      explosions: [
+        this.sound.add('sndExplode0'),
+        this.sound.add('sndExplode1'),
+      ],
+      laser: this.sound.add('sndLaser'),
+    };
   }
 }
