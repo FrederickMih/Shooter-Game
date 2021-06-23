@@ -95,7 +95,7 @@ export default class GameScene extends Phaser.Scene {// eslint-disable-line
     this.playerLasers = this.add.group();
 
     this.time.addEvent({
-      delay: 1000,
+      delay: 100,
       callback() {
         let enemy = null;
 
@@ -129,5 +129,9 @@ export default class GameScene extends Phaser.Scene {// eslint-disable-line
       callbackScope: this,
       loop: true,
     });
+
+    const score = 0;
+    const scoreText = this.add.text(16, 16, `Score: ${score}`,
+      { fontSize: '32px', fill: 'black' });
   }
 }
