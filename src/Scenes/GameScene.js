@@ -71,5 +71,18 @@ export default class GameScene extends Phaser.Scene {// eslint-disable-line
       ],
       laser: this.sound.add('sndLaser'),
     };
+    this.backgrounds = [];
+    for (let i = 0; i < 5; i += 1) {
+      const keys = ['skybox', 'solar'];
+      const key = keys[Phaser.Math.Between(0, keys.length - 1)];//eslint-disable-line
+      const bg = new navigateBackground(this, key, i * 10);
+      this.backgrounds.push(bg);
+    }
+    this.player = new Player(
+      this,
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.5,
+      'ship',
+    );
   }
 }
