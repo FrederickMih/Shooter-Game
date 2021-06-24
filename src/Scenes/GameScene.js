@@ -134,9 +134,9 @@ export default class GameScene extends Phaser.Scene {
       loop: true,
     });
 
-    let score = 0;
-    const scoreText = this.add.text(16, 16, `Score: ${score}`,
-      { fontSize: '32px', fill: 'black' });
+    // let score = 0;
+    // const scoreText = this.add.text(16, 16, `Score: ${score}`,
+    //   { fontSize: '32px', fill: 'black' });
 
     this.physics.add.collider(
       this.playerLasers,
@@ -148,9 +148,21 @@ export default class GameScene extends Phaser.Scene {
           }
           enemy.explode(true);
           playerLaser.destroy();
-          score += 10;
-          const scores = score;
-          scoreText.setText(`Score: ${scores}`);
+          // score += 10;
+          // const scores = score;
+          // scoreText.setText(`Score: ${scores}`);
+        }
+      },
+    );
+
+    this.physics.add.overlap(
+      this.player,
+      this.enemies,
+      (player, enemy) => {
+        if (!player.getData('isDead') && !enemy.getData('isDead')) {
+          player.explode(false);
+          player.onDestroy();
+          enemy.explode(true);
         }
       },
     );
