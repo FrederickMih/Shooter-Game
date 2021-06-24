@@ -134,9 +134,26 @@ export default class GameScene extends Phaser.Scene {
       loop: true,
     });
 
-    // const score = 0;
-    // const scoreText = this.add.text(16, 16, `Score: ${score}`,
-    //   { fontSize: '32px', fill: 'black' });
+    let score = 0;
+    const scoreText = this.add.text(16, 16, `Score: ${score}`,
+      { fontSize: '32px', fill: 'black' });
+
+    this.physics.add.collider(
+      this.playerLasers,
+      this.enemies,
+      (playerLaser, enemy) => {
+        if (enemy) {
+          if (enemy.onDestroy !== undefined) {
+            enemy.onDestroy();
+          }
+          enemy.explode(true);
+          playerLaser.destroy();
+          score += 10;
+          const scores = score;
+          scoreText.setText(`Score: ${scores}`);
+        }
+      },
+    );
   }
 
   update() {
