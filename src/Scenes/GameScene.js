@@ -1,5 +1,8 @@
 import Phaser from 'phaser';
 import Player from '../Entities/Player';
+import GunShip from '../Entities/GunShip';
+import CarrierShip from '../Entities/CarrierShip';//eslint-disable-line
+import ChaserShip from '../Entities/ChaserShip';//eslint-disable-line
 
 export default class GameScene extends Phaser.Scene {// eslint-disable-line
   constructor() {
@@ -95,41 +98,41 @@ export default class GameScene extends Phaser.Scene {// eslint-disable-line
     this.enemyLasers = this.add.group();
     this.playerLasers = this.add.group();
 
-    // this.time.addEvent({
-    //   delay: 100,
-    //   callback() {
-    //     let enemy = null;
+    this.time.addEvent({
+      delay: 100,
+      callback() {
+        let enemy = null;
 
-    //     if (Phaser.Math.Between(0, 10) >= 3) {
-    //       enemy = new GunShip(
-    //         this,
-    //         Phaser.Math.Between(0, this.game.config.width),
-    //         0,
-    //       );
-    //     } else if (Phaser.Math.Between(0, 10) >= 5) {
-    //       if (this.getEnemiesByType('ChaserShip').length < 5) {
-    //         enemy = new ChaserShip(
-    //           this,
-    //           Phaser.Math.Between(0, this.game.config.width),
-    //           0,
-    //         );
-    //       }
-    //     } else {
-    //       enemy = new CarrierShip(
-    //         this,
-    //         Phaser.Math.Between(0, this.game.config.width),
-    //         0,
-    //       );
-    //     }
+        if (Phaser.Math.Between(0, 10) >= 3) {
+          enemy = new GunShip(
+            this,
+            Phaser.Math.Between(0, this.game.config.width),
+            0,
+          );
+        } else if (Phaser.Math.Between(0, 10) >= 5) {
+          if (this.getEnemiesByType('ChaserShip').length < 5) {
+            enemy = new ChaserShip(
+              this,
+              Phaser.Math.Between(0, this.game.config.width),
+              0,
+            );
+          }
+        } else {
+          enemy = new CarrierShip(
+            this,
+            Phaser.Math.Between(0, this.game.config.width),
+            0,
+          );
+        }
 
-    //     if (enemy !== null) {
-    //       enemy.setScale(Phaser.Math.Between(10, 20) * 0.1);
-    //       this.enemies.add(enemy);
-    //     }
-    //   },
-    //   callbackScope: this,
-    //   loop: true,
-    // });
+        if (enemy !== null) {
+          enemy.setScale(Phaser.Math.Between(10, 20) * 0.1);
+          this.enemies.add(enemy);
+        }
+      },
+      callbackScope: this,
+      loop: true,
+    });
 
     // const score = 0;
     // const scoreText = this.add.text(16, 16, `Score: ${score}`,
