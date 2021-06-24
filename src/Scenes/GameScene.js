@@ -1,10 +1,10 @@
 import Phaser from 'phaser';
 import Player from '../Entities/Player';
 import GunShip from '../Entities/GunShip';
-import CarrierShip from '../Entities/CarrierShip';//eslint-disable-line
-import ChaserShip from '../Entities/ChaserShip';//eslint-disable-line
+import CarrierShip from '../Entities/CarrierShip';
+import ChaserShip from '../Entities/ChaserShip';
 
-export default class GameScene extends Phaser.Scene {// eslint-disable-line
+export default class GameScene extends Phaser.Scene {
   constructor() {
     super('Game');
   }
@@ -99,7 +99,7 @@ export default class GameScene extends Phaser.Scene {// eslint-disable-line
     this.playerLasers = this.add.group();
 
     this.time.addEvent({
-      delay: 100,
+      delay: 1000,
       callback() {
         let enemy = null;
 
@@ -165,5 +165,16 @@ export default class GameScene extends Phaser.Scene {// eslint-disable-line
         this.player.setData('isShooting', false);
       }
     }
+  }
+
+  getEnemiesByType(type) {
+    const arr = [];
+    for (let i = 0; i < this.enemies.getChildren().length; i += 1) {
+      const enemy = this.enemies.getChildren()[i];
+      if (enemy.getData('type') == type) { // eslint-disable-line 
+        arr.push(enemy);
+      }
+    }
+    return arr;
   }
 }
