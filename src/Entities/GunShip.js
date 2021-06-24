@@ -1,5 +1,6 @@
 import Phaser from'phaser'; // eslint-disable-line 
 import Entity from './Entity';
+import EnemyLaser from './EnemyLaser';
 
 class GunShip extends Entity {
   constructor(scene, x, y) {
