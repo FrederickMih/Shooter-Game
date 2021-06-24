@@ -3,10 +3,13 @@ import Player from '../Entities/Player';
 import GunShip from '../Entities/GunShip';
 import CarrierShip from '../Entities/CarrierShip';
 import ChaserShip from '../Entities/ChaserShip';
+import ScrollingBackground from '../Entities/ScrollingBackground';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
     super('Game');
+    this.score = 0;
+    this.value = 0;
   }
 
   preload() {
@@ -17,7 +20,7 @@ export default class GameScene extends Phaser.Scene {
     this.load.image('skybox', './assets/skybox.png');
     this.load.image('sprPlayer', './assets/sprPlayer.png');
     this.load.spritesheet('sprExplosion', './assets/sprExplosion.png', {
-      frameWidth: 32,
+      frameWidth: 36,
       frameHeight: 32,
     });
     this.load.spritesheet('sprEnemy0', './assets/sprEnemy0.png', {
@@ -36,6 +39,9 @@ export default class GameScene extends Phaser.Scene {
       frameHeight: 100,
     });
     // sound
+    this.load.audio('sndExplode0', './assets/sndExplode0.wav');
+    this.load.audio('sndExplode1', './assets/sndExplode1.wav');
+    this.load.audio('sndLaser', './assets/sndLaser.wav');
   }
 
   create() {
@@ -67,21 +73,21 @@ export default class GameScene extends Phaser.Scene {
       frameRate: 20,
       repeat: -1,
     });
-    // create explotion sound object
-    // this.sfx = {
-    //   explosions: [
-    //     this.sound.add('sndExplode0'),
-    //     this.sound.add('sndExplode1'),
-    //   ],
-    //   laser: this.sound.add('sndLaser'),
-    // };
-    // this.backgrounds = [];
-    // for (let i = 0; i < 5; i += 1) {
-    //   const keys = ['skybox', 'solar'];
-    //   const key = keys[Phaser.Math.Between(0, keys.length - 1)];
-    //   const bg = new navigateBackground(this, key, i * 10);
-    //   this.backgrounds.push(bg);
-    // }
+
+    this.sfx = {
+      explosions: [
+        this.sound.add('sndExplode0'),
+        this.sound.add('sndExplode1'),
+      ],
+      laser: this.sound.add('sndLaser'),
+    };
+    this.backgrounds = [];
+    for (let i = 0; i < 5; i += 1) {
+      const keys = ['skybox', 'solar'];
+      const key = keys[Phaser.Math.Between(0, keys.length - 1)];
+      const bg = new ScrollingBackground(this, key, i * 10);
+      this.backgrounds.push(bg);
+    }
     this.player = new Player(
       this,
       this.game.config.width * 0.5,
@@ -211,6 +217,27 @@ export default class GameScene extends Phaser.Scene {
         );
         this.player.setData('isShooting', false);
       }
+    }
+ for (let i = 0; i < this.enemies.getChildren().length; i++) { // eslint-disable-line 
+      const enemy = this.enemies.getChildren()[i]; // eslint-disable-line 
+
+      enemy.update();
+
+      if (enemy.x < -enemy.displayWidth
+        || enemy.x > this.game.config.width + enemy.displayWidth
+        || enemy.y < -enemy.displayHeight * 4
+        || enemy.y > this.game.config.height + enemy.displayHeight) {
+        if (enemy) {
+          if (enemy.onDestroy !== undefined) {
+            enemy.onDestroy();
+          }
+          enemy.destroy();
+        }
+      }
+    }
+
+    for (let i = 0; i < this.backgrounds.length; i += 1) { // eslint-disable-line 
+      this.backgrounds[i].update(); // eslint-disable-line 
     }
   }
 
