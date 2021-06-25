@@ -22,9 +22,11 @@
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "copy-webpack-plugin": "^9.0.0",
+    "css-loader": "^5.2.6",
     "eslint": "^7.29.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.4",
+    "style-loader": "^2.0.0",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
     "stylelint-csstree-validator": "^1.9.0",
@@ -34,6 +36,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "phaser": "^3.54.0-dev"
+    "phaser": "^3.54.0-dev",
+    "regenerator-runtime": "^0.13.7"
   }
 }
