@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:dev": "webpack --mode development",
-    "build": "webpack --mode production",
-    "start": "webpack serve --mode development",
-    "test": "jest"
+    "test": "jest",
+    "build": "webpack",
+    "start": "webpack serve"
   },
   "repository": {
     "type": "git",
