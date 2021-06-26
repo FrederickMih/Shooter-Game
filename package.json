@@ -6,7 +6,8 @@
   "scripts": {
     "build:dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "start": "webpack serve --mode development"
+    "start": "webpack serve --mode development",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   },
   "homepage": "https://github.com/FrederickMih/Shooter-Game#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.14.7",
     "babel-eslint": "^10.1.0",
     "copy-webpack-plugin": "^9.0.0",
     "css-loader": "^5.2.6",
@@ -37,6 +39,8 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@babel/core": "^7.14.6",
+    "babel-jest": "^27.0.5",
     "phaser": "^3.54.0-dev",
     "regenerator-runtime": "^0.13.7"
   }
