@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import ScrollingBackground from '../Entities/ScrollingBackground';
-import Button from '../Entities/Button';
-import config from '../Config/config';
+// import Button from '../Entities/Button';
+// import config from '../Config/config';
 
 class GameOver extends Phaser.Scene {
   constructor() {
@@ -60,15 +60,6 @@ class GameOver extends Phaser.Scene {
         this.scene.start('Game');
       },
       this,
-    );
-    this.gameButton = new Button(
-      this,
-      config.scale.width / 3,
-      config.scale.height / 3 - 150,
-      'blueButton1',
-      'blueButton2',
-      'End',
-      'Leaderboard',
     );
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
