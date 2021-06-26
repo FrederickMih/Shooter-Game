@@ -1,0 +1,20 @@
+.form {
+  position: absolute;
+  width: 50%;
+  top: 30px;
+  left: 425px;
+  margin: auto;
+}
+
+.form > input {
+  padding: 4px;
+  border-radius: 5px;
+}
+
+.name {
+  width: 180px;
+}
+
+.hidden {
+  display: none;
+}
