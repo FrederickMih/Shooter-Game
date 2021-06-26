@@ -4,6 +4,7 @@ import GunShip from '../Entities/GunShip';
 import CarrierShip from '../Entities/CarrierShip';
 import ChaserShip from '../Entities/ChaserShip';
 import ScrollingBackground from '../Entities/ScrollingBackground';
+import Form from '../Entities/PlayerForm';
 import leaderboard from '../Entities/LeaderBoard';
 
 export default class GameScene extends Phaser.Scene {
@@ -19,6 +20,8 @@ export default class GameScene extends Phaser.Scene {
     this.load.image('sprBg1', './assets/sprBg1.png');
     this.load.image('solar', './assets/solar.png');
     this.load.image('skybox', './assets/skybox.png');
+    this.load.image('sprBg2', './assets/sprBg2.png');
+    this.load.image('sprBg3', './assets/sprBg3.png');
     this.load.image('sprPlayer', './assets/sprPlayer.png');
     this.load.spritesheet('sprExplosion', './assets/sprExplosion.png', {
       frameWidth: 36,
@@ -35,9 +38,9 @@ export default class GameScene extends Phaser.Scene {
     });
     this.load.image('sprLaserEnemy0', './assets/sprLaserEnemy0.png');
     this.load.image('sprLaserPlayer', './assets/sprLaserPlayer.png');
-    this.load.spritesheet('spaceShip', './assets/spaceShip.png', {
-      frameWidth: 105,
-      frameHeight: 100,
+    this.load.spritesheet('ship', './assets/ship.png', {
+      frameWidth: 16,
+      frameHeight: 16,
     });
     // sound
     this.load.audio('sndExplode0', './assets/sndExplode0.wav');
@@ -47,6 +50,8 @@ export default class GameScene extends Phaser.Scene {
 
   create() {
     // Create out animation
+    Form.removeForm(this);
+
     this.anims.create({
       key: 'sprEnemy0',
       frames: this.anims.generateFrameNumbers('sprEnemy0'),
@@ -89,12 +94,14 @@ export default class GameScene extends Phaser.Scene {
       const bg = new ScrollingBackground(this, key, i * 10);
       this.backgrounds.push(bg);
     }
+
     this.player = new Player(
       this,
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
-      'spaceShip',
+      'ship',
     );
+
     this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
     this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -142,8 +149,8 @@ export default class GameScene extends Phaser.Scene {
     });
 
     let score = 0;
-    const scoreText = this.add.text(16, 16, `Score: ${score}`,
-      { fontSize: '32px', fill: 'black' });
+    const scoreText = this.add.text(18, 18, `Score: ${score}`,
+      { fontSize: '40px', fill: 'white' });
 
     this.physics.add.collider(
       this.playerLasers,

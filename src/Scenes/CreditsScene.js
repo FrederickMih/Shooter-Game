@@ -8,12 +8,12 @@ export default class CreditsScene extends Phaser.Scene {
 
   create() {
     this.creditsText = this.add.text(0, 0, 'Credits', {
-      fontSize: '32px',
-      fill: '#fff',
+      fontSize: '30px',
+      fill: '#00bfff',
     });
-    this.madeByText = this.add.text(0, 0, 'Created By: Dibyendu Das', {
-      fontSize: '26px',
-      fill: '#fff',
+    this.madeByText = this.add.text(0, 0, 'Creator: Mih Frederick', {
+      fontSize: '35px',
+      fill: '#00bfff',
     });
     this.zone = this.add.zone(
       config.scale.width / 2,

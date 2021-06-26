@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
+import Form from '../Entities/PlayerForm';
 import Leaderboard from '../Entities/LeaderBoard';
-import Button from '../Entities/PlayButton';
+import Button from '../Entities/Button';
 
 export default class LeaderboardScene extends Phaser.Scene {
   constructor() {
@@ -8,7 +9,9 @@ export default class LeaderboardScene extends Phaser.Scene {
   }
 
   create() {
+    Form.removeForm(this);
     Leaderboard.displayedScore(this);
+
     this.add.text(640, 25, 'Leaderboard', {
       type: Phaser.AUTO,
       autoCenter: Phaser.Scale.CENTER_BOTH,

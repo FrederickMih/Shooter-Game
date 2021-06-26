@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import ScrollingBackground from '../Entities/ScrollingBackground';
-import Button from '../Entities/PlayButton';
+import Button from '../Entities/Button';
 import config from '../Config/config';
 
 class GameOver extends Phaser.Scene {
@@ -13,7 +13,7 @@ class GameOver extends Phaser.Scene {
       fontFamily: 'monospace',
       fontSize: 48,
       fontStyle: 'bold',
-      color: 'black',
+      color: 'red',
       align: 'center',
     });
     this.title.setOrigin(0.5);
@@ -40,13 +40,13 @@ class GameOver extends Phaser.Scene {
       this,
     );
 
-    this.btnRestart.on('pointerout', function () {// eslint-disable-line
+    this.btnRestart.on('pointerout', function () {  //eslint-disable-line
       this.setTexture('sprBtnRestart');
     });
 
     this.btnRestart.on(
       'pointerdown',
-      function () { // eslint-disable-line
+      function () {// eslint-disable-line
         this.btnRestart.setTexture('sprBtnRestartDown');
         this.sfx.btnDown.play();
       },
@@ -55,7 +55,7 @@ class GameOver extends Phaser.Scene {
 
     this.btnRestart.on(
       'pointerup',
-      function () {// eslint-disable-line
+      function () { // eslint-disable-line
         this.btnRestart.setTexture('sprBtnRestart');
         this.scene.start('Game');
       },
@@ -63,8 +63,8 @@ class GameOver extends Phaser.Scene {
     );
     this.gameButton = new Button(
       this,
-      config.scale.width / 2,
-      config.scale.height / 2 - 100,
+      config.scale.width / 3,
+      config.scale.height / 3 - 150,
       'blueButton1',
       'blueButton2',
       'End',
@@ -72,7 +72,7 @@ class GameOver extends Phaser.Scene {
     );
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
-      const keys = ['sunny', 'sun'];
+      const keys = ['skybox', 'solor', 'sprBg2', 'sprBg3'];
       const key = keys[Phaser.Math.Between(0, keys.length - 1)]; // eslint-disable-line
       const bg = new ScrollingBackground(this, key, i * 10);
       this.backgrounds.push(bg);

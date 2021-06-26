@@ -43,10 +43,22 @@ class Player extends Entity {
         const laser = new PlayerLaser(this.scene, this.x, this.y);
         this.scene.playerLasers.add(laser);
 
-        // this.scene.sfx.laser.play(); // play the laser sound effect
+        this.scene.sfx.laser.play(); // play the laser sound effect
         this.setData('timerShootTick', 0);
       }
     }
+  }
+
+  onDestroy() {
+    this.scene.time.addEvent({
+      // go to game over scene
+      delay: 1000,
+      callback() {
+        this.scene.scene.start('SceneGameOver');
+      },
+      callbackScope: this,
+      loop: false,
+    });
   }
 }
 export default Player;

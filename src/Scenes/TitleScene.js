@@ -1,16 +1,16 @@
 import 'phaser';
 import config from '../Config/config';
-import Button from '../Entities/PlayButton';
-// import form from '../Entities/PlayerForm';
+import Button from '../Entities/Button';
+import Form from '../Entities/PlayerForm';
 import '../../dist/assets/css/style.css';
 
-export default class TitleScene extends Phaser.Scene {// eslint-disable-line
+export default class TitleScene extends Phaser.Scene { // eslint-disable-line
   constructor() {
     super('Title');
   }
 
   create() {
-    // form.showForm();
+    Form.showForm();
 
     // Game
     this.gameButton = new Button(
@@ -30,7 +30,7 @@ export default class TitleScene extends Phaser.Scene {// eslint-disable-line
       config.scale.height / 2 + 100,
       'blueButton1',
       'blueButton2',
-      'Credits',
+      'Points',
       'Credits',
     );
 
@@ -40,9 +40,17 @@ export default class TitleScene extends Phaser.Scene {// eslint-disable-line
       config.scale.height / 2 + 200,
       'blueButton1',
       'blueButton2',
-      'Board',
+      'Scores',
       'Leaderboard',
     );
+
+    this.model = this.sys.game.globals.model;
+    if (this.model.musicOn === true && this.model.bgMusicPlaying === false) {
+      this.bgMusic = this.sound.add('bgMusic', { volume: 0.1, loop: true });
+      this.bgMusic.play();
+      this.model.bgMusicPlaying = true;
+      this.sys.game.globals.bgMusic = this.bgMusic;
+    }
   }
 
   centerButton(gameObject, offset = 0) {
@@ -57,8 +65,8 @@ export default class TitleScene extends Phaser.Scene {// eslint-disable-line
     );
   }
 
-  centerButtonText(gameText, gameButton) {// eslint-disable-line
-    Phaser.Display.Align.In.Center(// eslint-disable-line
+  centerButtonText(gameText, gameButton) {  // eslint-disable-line
+    Phaser.Display.Align.In.Center(   // eslint-disable-line
       gameText,
       gameButton,
     );
