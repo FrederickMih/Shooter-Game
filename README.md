@@ -19,7 +19,7 @@ Game over is triggered by the enemies killing the player by getting hit by laser
 
 ## Live Demo Link
 
-[Play Live]()
+[Play Live](https://loving-yalow-cbcf29.netlify.app/)
 ### Gameplay
 
 To play the game follow the instruction below:
