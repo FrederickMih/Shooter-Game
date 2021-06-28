@@ -68,29 +68,29 @@ export default class PreloaderScene extends Phaser.Scene {
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
 
     // load ../../dist/assets/ueeded in our game
-    this.load.image('blueButton1', '../dist/assets/screen/blue_button02.png');
-    this.load.image('blueButton2', '../dist/assets/screen/blue_button03.png');
-    this.load.image('phaserLogo', '../dist/assets/logo.png');
-    this.load.image('box', '../dist/assets/screen/grey_box.png');
-    this.load.image('checkedBox', '../dist/assets/screen/blue_boxCheckmark.png');
-    this.load.audio('bgMusic', ['../dist/assets/techno.mp3']);
-    this.load.image('ship', '../dist/assets/ship.png');
+    this.load.image('blueButton1', '../../dist/assets/screen/blue_button02.png');
+    this.load.image('blueButton2', '../../dist/assets/screen/blue_button03.png');
+    this.load.image('phaserLogo', '../../dist/assets/logo.png');
+    this.load.image('box', '../../dist/assets/screen/grey_box.png');
+    this.load.image('checkedBox', '../../dist/assets/screen/blue_boxCheckmark.png');
+    this.load.audio('bgMusic', ['../../dist/assets/techno.mp3']);
+    this.load.image('ship', '../../dist/assets/ship.png');
 
-    this.load.image('sprBtnPlay', '../dist/assets/sprBtnPlay.png');
-    this.load.image('sprBtnPlayHover', '../dist/assets/sprBtnPlayHover.png');
-    this.load.image('sprBtnPlayDown', '../dist/assets/sprBtnPlayDown.png');
-    this.load.image('sprBtnRestart', '../dist/assets/sprBtnRestart.png');
+    this.load.image('sprBtnPlay', '../../dist/assets/sprBtnPlay.png');
+    this.load.image('sprBtnPlayHover', '../../dist/assets/sprBtnPlayHover.png');
+    this.load.image('sprBtnPlayDown', '../../dist/assets/sprBtnPlayDown.png');
+    this.load.image('sprBtnRestart', '../../dist/assets/sprBtnRestart.png');
     this.load.image(
       'sprBtnRestartHover',
-      '../dist/assets/sprBtnRestartHover.png',
+      '../../dist/assets/sprBtnRestartHover.png',
     );
     this.load.image(
       'sprBtnRestartDown',
-      '../dist/assets/sprBtnRestartDown.png',
+      '../../dist/assets/sprBtnRestartDown.png',
     );
 
-    this.load.audio('sndBtnOver', '../dist/assets/sndBtnOver.wav');
-    this.load.audio('sndBtnDown', '../dist/assets/sndBtnDown.wav');
+    this.load.audio('sndBtnOver', '../../dist/assets/sndBtnOver.wav');
+    this.load.audio('sndBtnDown', '../../dist/assets/sndBtnDown.wav');
     form.createForm(this);
   }
 
