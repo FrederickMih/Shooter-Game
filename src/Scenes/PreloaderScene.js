@@ -96,7 +96,8 @@ export default class PreloaderScene extends Phaser.Scene {
 
   ready() {
     this.scene.start('Title');
-    this.readyCount++; // eslint-disable-line 
+    // eslint-disable-next-line no-plusplus
+    this.readyCount++;
     if (this.readyCount === 2) {
       this.scene.start('Title');
     }

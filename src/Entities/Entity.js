@@ -15,7 +15,8 @@ class Entity extends Phaser.GameObjects.Sprite {
     if (!this.getData('isDead')) {
       this.setTexture('sprExplosion'); // this refers to the same
       this.play('sprExplosion'); // play the animation
-      this.scene.sfx.explosions[Phaser.Math.Between(0, this.scene.sfx.explosions.length - 1)].play(); // eslint-disable-line 
+      // eslint-disable-next-line max-len
+      this.scene.sfx.explosions[Phaser.Math.Between(0, this.scene.sfx.explosions.length - 1)].play();
       if (this.shootTimer !== undefined) {
         if (this.shootTimer) {
           this.shootTimer.remove(false);
@@ -23,7 +24,7 @@ class Entity extends Phaser.GameObjects.Sprite {
       }
       this.setAngle(0);
       this.body.setVelocity(0, 0);
-      this.on('animationcomplete', function () {  // eslint-disable-line 
+      this.on('animationcomplete', function () {
         if (canDestroy) {
           this.destroy();
         } else {

@@ -226,15 +226,17 @@ export default class GameScene extends Phaser.Scene {
         this.player.setData('isShooting', false);
       }
     }
- for (let i = 0; i < this.enemies.getChildren().length; i++) { // eslint-disable-line 
-      const enemy = this.enemies.getChildren()[i]; // eslint-disable-line 
+    for (let i = 0; i < this.enemies.getChildren().length; i += 1) {
+      const enemy = this.enemies.getChildren()[i];
 
       enemy.update();
 
-      if (enemy.x < -enemy.displayWidth
+      if (
+        enemy.x < -enemy.displayWidth
         || enemy.x > this.game.config.width + enemy.displayWidth
         || enemy.y < -enemy.displayHeight * 4
-        || enemy.y > this.game.config.height + enemy.displayHeight) {
+        || enemy.y > this.game.config.height + enemy.displayHeight
+      ) {
         if (enemy) {
           if (enemy.onDestroy !== undefined) {
             enemy.onDestroy();
@@ -244,8 +246,8 @@ export default class GameScene extends Phaser.Scene {
       }
     }
 
-    for (let i = 0; i < this.backgrounds.length; i += 1) { // eslint-disable-line 
-      this.backgrounds[i].update(); // eslint-disable-line 
+    for (let i = 0; i < this.backgrounds.length; i += 1) {
+      this.backgrounds[i].update();
     }
   }
 
@@ -253,7 +255,7 @@ export default class GameScene extends Phaser.Scene {
     const arr = [];
     for (let i = 0; i < this.enemies.getChildren().length; i += 1) {
       const enemy = this.enemies.getChildren()[i];
-      if (enemy.getData('type') == type) { // eslint-disable-line 
+      if (enemy.getData('type') === type) {
         arr.push(enemy);
       }
     }

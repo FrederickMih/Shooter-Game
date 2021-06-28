@@ -20,7 +20,7 @@ export default class CreditsScene extends Phaser.Scene {
       config.scale.height / 2,
       config.scale.width,
       config.scale.height,
-    ); // eslint-disable-line
+    );
 
     Phaser.Display.Align.In.Center(this.creditsText, this.zone);
 
@@ -35,7 +35,8 @@ export default class CreditsScene extends Phaser.Scene {
       duration: 3000,
       delay: 1000,
       onComplete() {
-        this.destroy; // eslint-disable-line
+        // eslint-disable-next-line no-unused-expressions
+        this.destroy;
       },
     });
 
@@ -45,10 +46,11 @@ export default class CreditsScene extends Phaser.Scene {
       ease: 'Power1',
       duration: 8000,
       delay: 1000,
-      onComplete: function () { // eslint-disable-line
-        this.madeByTween.destroy; // eslint-disable-line
+      onComplete() {
+        // eslint-disable-next-line no-unused-expressions
+        this.madeByTween.destroy;
         this.scene.start('Title');
-      }.bind(this),
+      },
     });
   }
 }

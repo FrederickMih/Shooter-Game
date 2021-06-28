@@ -1,7 +1,5 @@
 import Phaser from 'phaser';
 import ScrollingBackground from '../Entities/ScrollingBackground';
-// import Button from '../Entities/Button';
-// import config from '../Config/config';
 
 class GameOver extends Phaser.Scene {
   constructor() {
@@ -33,20 +31,20 @@ class GameOver extends Phaser.Scene {
 
     this.btnRestart.on(
       'pointerover',
-      function () { // eslint-disable-line
+      function () {
         this.btnRestart.setTexture('sprBtnRestartHover'); // set the button texture to sprBtnPlayHover
         this.sfx.btnOver.play(); // play the button over sound
       },
       this,
     );
 
-    this.btnRestart.on('pointerout', function () {  //eslint-disable-line
+    this.btnRestart.on('pointerout', function () {
       this.setTexture('sprBtnRestart');
     });
 
     this.btnRestart.on(
       'pointerdown',
-      function () {// eslint-disable-line
+      function () {
         this.btnRestart.setTexture('sprBtnRestartDown');
         this.sfx.btnDown.play();
       },
@@ -55,7 +53,7 @@ class GameOver extends Phaser.Scene {
 
     this.btnRestart.on(
       'pointerup',
-      function () { // eslint-disable-line
+      function () {
         this.btnRestart.setTexture('sprBtnRestart');
         this.scene.start('Game');
       },
@@ -64,7 +62,7 @@ class GameOver extends Phaser.Scene {
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
       const keys = ['skybox', 'solor', 'sprBg2', 'sprBg3'];
-      const key = keys[Phaser.Math.Between(0, keys.length - 1)]; // eslint-disable-line
+      const key = keys[Phaser.Math.Between(0, keys.length - 1)];
       const bg = new ScrollingBackground(this, key, i * 10);
       this.backgrounds.push(bg);
     }

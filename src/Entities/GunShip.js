@@ -1,4 +1,4 @@
-import Phaser from'phaser'; // eslint-disable-line 
+import Phaser from 'phaser';
 import Entity from './Entity';
 import EnemyLaser from './EnemyLaser';
 

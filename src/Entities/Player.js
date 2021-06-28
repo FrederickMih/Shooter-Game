@@ -32,8 +32,10 @@ class Player extends Entity {
   update() {
     this.body.setVelocity(0, 0);
 
-    this.x = Phaser.Math.Clamp(this.x, 0, this.scene.game.config.width); // eslint-disable-line 
-    this.y = Phaser.Math.Clamp(this.y, 0, this.scene.game.config.height); // eslint-disable-line 
+    // eslint-disable-next-line no-undef
+    this.x = Phaser.Math.Clamp(this.x, 0, this.scene.game.config.width);
+    // eslint-disable-next-line no-undef
+    this.y = Phaser.Math.Clamp(this.y, 0, this.scene.game.config.height);
 
     if (this.getData('isShooting')) {
       if (this.getData('timerShootTick') < this.getData('timerShootDelay')) {
