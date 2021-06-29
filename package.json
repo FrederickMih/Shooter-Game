@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "webpack",
-    "start": "webpack serve"
+    "build:dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack serve --mode development"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,8 @@
   "dependencies": {
     "@babel/core": "^7.14.6",
     "babel-jest": "^27.0.5",
+    "babel-loader": "^8.2.2",
+    "babel-polyfill": "^6.26.0",
     "phaser": "^3.54.0-dev",
     "regenerator-runtime": "^0.13.7"
   }

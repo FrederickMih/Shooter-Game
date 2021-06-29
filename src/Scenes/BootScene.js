@@ -6,7 +6,7 @@ export default class BootScene extends Phaser.Scene {// eslint-disable-line
   }
 
   preload() {
-    this.load.image('logo', './assets/logo.png');
+    this.load.image('logo', 'assets/logo.png');
   }
 
   create() {
