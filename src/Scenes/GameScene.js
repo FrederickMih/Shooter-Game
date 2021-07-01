@@ -6,6 +6,7 @@ import ChaserShip from '../Entities/ChaserShip';
 import ScrollingBackground from '../Entities/ScrollingBackground';
 import Form from '../Entities/PlayerForm';
 import leaderboard from '../Entities/LeaderBoard';
+import { getName } from '../util/PlayerNameUtil';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -100,13 +101,34 @@ export default class GameScene extends Phaser.Scene {
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
       'ship',
+      {
+        scene: this,
+        x: 65,
+        y: 290,
+        texture: 'mainchar',
+        frame: 'idle_1',
+      },
+
+      getName(),
     );
+    // this.player = new Player(
+    //   {
+    //     scene: this,
+    //     x: 65,
+    //     y: 290,
+    //     texture: 'mainchar',
+    //     frame: 'idle_1',
+    //   },
+    //   getName(),
+    // );
 
     this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
     this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-    this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+    this.keySpace = this.input.keyboard.addKey(
+      Phaser.Input.Keyboard.KeyCodes.SPACE,
+    );
 
     this.enemies = this.add.group();
     this.enemyLasers = this.add.group();
@@ -149,8 +171,10 @@ export default class GameScene extends Phaser.Scene {
     });
 
     let score = 0;
-    const scoreText = this.add.text(18, 18, `Score: ${score}`,
-      { fontSize: '40px', fill: 'white' });
+    const scoreText = this.add.text(18, 18, `Score: ${score}`, {
+      fontSize: '40px',
+      fill: 'white',
+    });
 
     this.physics.add.collider(
       this.playerLasers,
@@ -169,35 +193,27 @@ export default class GameScene extends Phaser.Scene {
       },
     );
 
-    this.physics.add.overlap(
-      this.player,
-      this.enemies,
-      (player, enemy) => {
-        if (!player.getData('isDead') && !enemy.getData('isDead')) {
-          player.explode(false);
-          player.onDestroy();
-          const scores = score;
-          const { playerName } = this.sys.game.globals;
-          leaderboard.savedScore(playerName, scores);
-          enemy.explode(true);
-        }
-      },
-    );
+    this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
+      if (!player.getData('isDead') && !enemy.getData('isDead')) {
+        player.explode(false);
+        player.onDestroy();
+        const scores = score;
+        const { playerName } = this.sys.game.globals;
+        leaderboard.savedScore(playerName, scores);
+        enemy.explode(true);
+      }
+    });
 
-    this.physics.add.overlap(
-      this.player,
-      this.enemyLasers,
-      (player, laser) => {
-        if (!player.getData('isDead') && !laser.getData('isDead')) {
-          player.explode(false);
-          player.onDestroy();
-          const scores = score;
-          const { playerName } = this.sys.game.globals;
-          leaderboard.savedScore(playerName, scores);
-          laser.destroy();
-        }
-      },
-    );
+    this.physics.add.overlap(this.player, this.enemyLasers, (player, laser) => {
+      if (!player.getData('isDead') && !laser.getData('isDead')) {
+        player.explode(false);
+        player.onDestroy();
+        const scores = score;
+        const { playerName } = this.sys.game.globals;
+        leaderboard.savedScore(playerName, scores);
+        laser.destroy();
+      }
+    });
   }
 
   update() {

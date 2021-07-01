@@ -45,7 +45,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
     // update progress bar
     this.load.on('progress', (value) => {
-      percentText.setText(`${parseInt(value * 100)}%`);// eslint-disable-line 
+      percentText.setText(`${parseInt(value * 100)}%`); // eslint-disable-line
       progressBar.clear();
       progressBar.fillStyle(0xffffff, 1);
       progressBar.fillRect(250, 280, 300 * value, 30);
@@ -80,14 +80,8 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('sprBtnPlayHover', 'assets/sprBtnPlayHover.png');
     this.load.image('sprBtnPlayDown', 'assets/sprBtnPlayDown.png');
     this.load.image('sprBtnRestart', 'assets/sprBtnRestart.png');
-    this.load.image(
-      'sprBtnRestartHover',
-      'assets/sprBtnRestartHover.png',
-    );
-    this.load.image(
-      'sprBtnRestartDown',
-      'assets/sprBtnRestartDown.png',
-    );
+    this.load.image('sprBtnRestartHover', 'assets/sprBtnRestartHover.png');
+    this.load.image('sprBtnRestartDown', 'assets/sprBtnRestartDown.png');
 
     this.load.audio('sndBtnOver', 'assets/sndBtnOver.wav');
     this.load.audio('sndBtnDown', 'assets/sndBtnDown.wav');

@@ -43,7 +43,9 @@
     "babel-jest": "^27.0.5",
     "babel-loader": "^8.2.2",
     "babel-polyfill": "^6.26.0",
+    "lodash": "^4.17.21",
     "phaser": "^3.54.0-dev",
-    "regenerator-runtime": "^0.13.7"
+    "regenerator-runtime": "^0.13.7",
+    "webpack-merge": "^5.8.0"
   }
 }

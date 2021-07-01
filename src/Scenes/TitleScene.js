@@ -4,7 +4,7 @@ import Button from '../Entities/Button';
 import Form from '../Entities/PlayerForm';
 import '../assets/css/style.css';
 
-export default class TitleScene extends Phaser.Scene { //eslint-disable-line
+export default class TitleScene extends Phaser.Scene {//eslint-disable-line
   constructor() {
     super('Title');
   }
@@ -66,8 +66,8 @@ export default class TitleScene extends Phaser.Scene { //eslint-disable-line
     );
   }
 
-  centerButtonText(gameText, gameButton) {  // eslint-disable-line
-    Phaser.Display.Align.In.Center(   // eslint-disable-line
+  centerButtonText(gameText, gameButton) { // eslint-disable-line
+    Phaser.Display.Align.In.Center( // eslint-disable-line
       gameText,
       gameButton,
     );

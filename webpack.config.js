@@ -1,28 +1,25 @@
-const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require("path"); // eslint-disable-line
+const webpack = require("webpack"); // eslint-disable-line
 
 module.exports = {
-  entry: {
-    entry: './src/index.js',
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
   },
-
+  entry: './src/index.js',
+  mode: 'development',
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/dist/',
-    filename: '[name].main.js',
+    filename: 'main.js',
   },
 
   module: {
     rules: [
       {
-        test: /\.js$/,
-        include: path.resolve(__dirname, 'src/'),
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-          },
-        },
+        test: [/\.vert$/, /\.frag$/],
+        use: 'raw-loader',
       },
       {
         test: /\.css$/,
@@ -31,27 +28,10 @@ module.exports = {
     ],
   },
 
-  devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
-    compress: true,
-    liveReload: true,
-  },
-
   plugins: [
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: path.resolve(__dirname, 'src/assets'),
-          to: path.resolve(__dirname, 'dist/assets'),
-        },
-      ],
+    new webpack.DefinePlugin({
+      CANVAS_RENDERER: JSON.stringify(true),
+      WEBGL_RENDERER: JSON.stringify(true),
     }),
   ],
-
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-      name: 'common',
-    },
-  },
 };

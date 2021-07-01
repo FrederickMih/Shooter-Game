@@ -14,7 +14,7 @@ const form = (() => {
     input.id = 'name';
     input.type = 'text';
     input.placeholder = 'Enter Name';
-    input.value = scene.sys.game.globals.PlayerName;
+    input.value = scene.sys.game.globals.playerName;
 
     const submit = document.createElement('input');
     submit.type = 'submit';
