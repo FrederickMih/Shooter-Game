@@ -2,13 +2,8 @@ const path = require("path"); // eslint-disable-line
 const webpack = require("webpack"); // eslint-disable-line
 
 module.exports = {
-  performance: {
-    hints: false,
-    maxEntrypointSize: 512000,
-    maxAssetSize: 512000,
-  },
   entry: './src/index.js',
-  mode: 'development',
+
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/dist/',

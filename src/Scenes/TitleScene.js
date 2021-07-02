@@ -1,16 +1,24 @@
 import 'phaser';
 import config from '../Config/config';
 import Button from '../Entities/Button';
-import Form from '../Entities/PlayerForm';
-import '../assets/css/style.css';
 
 export default class TitleScene extends Phaser.Scene {//eslint-disable-line
   constructor() {
     super('Title');
   }
 
+  preload() {
+    this.add.image(380, 250, 'backgroundImg');
+  }
+
   create() {
-    Form.showForm();
+    this.titleText = this.add.text(
+      this.scale.width / 2,
+      this.scale.height / 7,
+      'Ship Shooter',
+      { fontSize: '64px', fill: '#fff' },
+    );
+    this.titleText.setOrigin(0.5);
 
     // Game
     this.gameButton = new Button(
@@ -23,25 +31,36 @@ export default class TitleScene extends Phaser.Scene {//eslint-disable-line
       'Game',
     );
 
-    // Credits
-    this.creditsButton = new Button(
+    this.leaderboardButton = new Button(
+      this,
+      config.scale.width / 2,
+      config.scale.height / 2,
+      'blueButton1',
+      'blueButton2',
+      'Scores',
+      'Leaderboard',
+    );
+
+    // Options
+    this.optionsButton = new Button(
       this,
       config.scale.width / 2,
       config.scale.height / 2 + 100,
       'blueButton1',
       'blueButton2',
-      'Points',
-      'Credits',
+      'Options',
+      'Options',
     );
 
-    this.leaderboardButton = new Button(
+    // Credits
+    this.creditsButton = new Button(
       this,
       config.scale.width / 2,
       config.scale.height / 2 + 200,
       'blueButton1',
       'blueButton2',
-      'Scores',
-      'Leaderboard',
+      'Credits',
+      'Credits',
     );
 
     this.model = this.sys.game.globals.model;

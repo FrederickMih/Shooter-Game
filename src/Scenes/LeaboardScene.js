@@ -1,34 +1,48 @@
 import Phaser from 'phaser';
-import Form from '../Entities/PlayerForm';
-import Leaderboard from '../Entities/LeaderBoard';
 import Button from '../Entities/Button';
+import { addScore, getScores } from '../api/score';
 
-export default class LeaderboardScene extends Phaser.Scene {
+export default class LeaderBoardScene extends Phaser.Scene {
   constructor() {
-    super('Leaderboard');
+    super('LeaderBoard');
+  }
+
+  init(player) {
+    if (player.experience > 0) {
+      addScore(player.name, player.experience);
+    }
+    player.experience = 0;
+    this.text = this.add.text(250, 100, 'Leaderboard: ', { fontSize: 40 });
   }
 
   create() {
-    Form.removeForm(this);
-    Leaderboard.displayedScore(this);
-    this.add
-      .text(640, 25, 'Leaderboard', {
-        type: Phaser.AUTO,
-        autoCenter: Phaser.Scale.CENTER_BOTH,
-        fontSize: 35,
-        color: '#000',
-        fontStyle: 'bold',
-        padding: 5,
-      })
-      .setOrigin(0.5);
-
-    this.backButton = new Button(
+    this.waitingMessage = this.add.text(250, 200, 'Please wait...', {
+      fontSize: 24,
+    });
+    const getTopScores = async () => {
+      const scores = await getScores();
+      let y = 150;
+      this.waitingMessage.destroy();
+      scores.forEach((element) => {
+        this.add.text(
+          200,
+          y,
+          `${scores.indexOf(element) + 1} User: ${element[0]} score: ${
+            element[1]
+          } exp`,
+          { fontSize: 24 },
+        );
+        y += 40;
+      });
+    };
+    getTopScores();
+    this.menuButton = new Button(
       this,
-      350,
-      540,
+      400,
+      500,
       'blueButton1',
       'blueButton2',
-      'Back',
+      'Menu',
       'Title',
     );
   }

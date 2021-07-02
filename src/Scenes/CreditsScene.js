@@ -1,9 +1,14 @@
+/* eslint-disable no-undef,  class-methods-use-this, no-unused-expressions, func-names */
 import Phaser from 'phaser';
 import config from '../Config/config';
 
 export default class CreditsScene extends Phaser.Scene {
   constructor() {
     super('Credits');
+  }
+
+  preload() {
+    this.add.image(380, 250, 'backgroundImg');
   }
 
   create() {
@@ -34,8 +39,8 @@ export default class CreditsScene extends Phaser.Scene {
       ease: 'Power1',
       duration: 3000,
       delay: 1000,
+
       onComplete() {
-        // eslint-disable-next-line no-unused-expressions
         this.destroy;
       },
     });
@@ -46,11 +51,11 @@ export default class CreditsScene extends Phaser.Scene {
       ease: 'Power1',
       duration: 8000,
       delay: 1000,
-      onComplete() {
-        // eslint-disable-next-line no-unused-expressions
+
+      onComplete: function () {
         this.madeByTween.destroy;
         this.scene.start('Title');
-      },
+      }.bind(this),
     });
   }
 }
