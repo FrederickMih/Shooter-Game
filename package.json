@@ -49,6 +49,7 @@
     "lodash": "^4.17.21",
     "node-fetch": "^2.6.1",
     "phaser": "^3.54.0-dev",
+    "phaser-matter-collision-plugin": "^0.10.2",
     "regenerator-runtime": "^0.13.7",
     "webpack-merge": "^5.8.0"
   }

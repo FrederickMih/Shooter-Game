@@ -1,14 +1,19 @@
+/* eslint-disable no-undef */
 import 'phaser';
 
 export default {
-  type: Phaser.AUTO, // eslint-disable-line
-  parent: 'phaser-example',
+  type: Phaser.AUTO,
+  parent: 'Shooter Game',
+  dom: {
+    createContainer: true,
+  },
+
   scale: {
-    autoCenter: Phaser.Scale.CENTER_BOTH, // eslint-disable-line
+    mode: Phaser.Scale.FIT,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
 
     width: 800,
     height: 600,
-    backgroundColor: 'black',
   },
   physics: {
     default: 'arcade',
