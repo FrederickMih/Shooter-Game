@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import Player from '../Entities/Player';
+import Button from '../Entities/Button';
 import GunShip from '../Entities/GunShip';
 import CarrierShip from '../Entities/CarrierShip';
 import ChaserShip from '../Entities/ChaserShip';
@@ -160,6 +161,15 @@ export default class GameScene extends Phaser.Scene {
       fontSize: '40px',
       fill: 'white',
     });
+    this.gameExit = new Button(
+      this,
+      700,
+      35,
+      'blueButton1',
+      'blueButton2',
+      'Exit',
+      'Title',
+    );
 
     this.physics.add.collider(
       this.playerLasers,

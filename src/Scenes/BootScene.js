@@ -22,7 +22,15 @@ export default class BootScene extends Phaser.Scene {
       .setOrigin(0.5);
 
     this.message = this.add
-      .text(400, 250, 'Enter username and press ENTER', {
+      .text(400, 250, 'Please Enter Your Name \n', {
+        color: '#FFFFFF',
+        fontSize: 30,
+        fontStyle: 'bold',
+      })
+      .setOrigin(0.5);
+
+    this.message = this.add
+      .text(400, 250, ' \n\n\n\n\n\n\n\n\n\n\n\n\n\n Press Enter', {
         color: '#FFFFFF',
         fontSize: 30,
         fontStyle: 'bold',
