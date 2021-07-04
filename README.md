@@ -13,7 +13,11 @@ Game over is triggered by the enemies killing the player by getting hit by laser
 
 ### How it looks
 
-![Screenshot](./src/assets/)
+![Screenshot](screenshots/Screenshot1.png)
+![Screenshot](screenshots/Screenshot2.png)
+![Screenshot](screenshots/Screenshot3.png)
+![Screenshot](screenshots/Screenshot4.png)
+![Screenshot](screenshots/Screenshot5.png)
 
 
 
