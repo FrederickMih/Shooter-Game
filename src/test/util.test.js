@@ -1,5 +1,9 @@
 import { setName, getName } from '../util/PlayerNameUtil';
 
+test("Default player name should be 'your name'", () => {
+  expect(getName()).toBe('your name');
+});
+
 test("If name input field is empty name should be 'unnamed'", () => {
   setName('');
   expect(getName()).toBe('unnamed');
