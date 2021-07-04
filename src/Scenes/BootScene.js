@@ -7,11 +7,11 @@ export default class BootScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('blueButton1', '../../assets/screen/blue_button02.png');
-    this.load.image('blueButton2', '../../assets/screen/blue_button03.png');
-    this.load.html('input', '../../assets/form/username_input.html');
-    this.load.image('backgroundImg', '../../assets/2.jpg');
-    this.load.image('backgroundImg', '../../assets/1.jpg');
+    this.load.image('blueButton1', '../../dist/assets/screen/blue_button02.png');
+    this.load.image('blueButton2', '../../dist/assets/screen/blue_button03.png');
+    this.load.html('input', '../../dist/assets/form/username_input.html');
+    this.load.image('backgroundImg', '../../dist/assets/2.jpg');
+    this.load.image('backgroundImg', '../../dist/assets/1.jpg');
   }
 
   create() {
