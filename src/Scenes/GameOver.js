@@ -61,7 +61,7 @@ class GameOver extends Phaser.Scene {
       },
       this,
     );
-    this.gameButton = new Button(this, config.scale.width / 2, config.scale.height / 2 - 100, 'blueButton1', 'blueButton2', 'End Game', 'LeaderBoard');
+    this.gameButton = new Button(this, config.scale.width / 2, config.scale.height / 2 - 100, 'blueButton1', 'blueButton2', 'Scores', 'LeaderBoard');
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
       const keys = ['skybox', 'solor'];

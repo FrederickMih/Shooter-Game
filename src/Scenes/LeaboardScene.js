@@ -16,7 +16,7 @@ export default class LeaderBoardScene extends Phaser.Scene {
   }
 
   create() {
-    this.waitingMessage = this.add.text(250, 200, 'Please wait...', {
+    this.waitingMessage = this.add.text(250, 200, 'Loading.....', {
       fontSize: 24,
     });
     const getTopScores = async () => {
