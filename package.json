@@ -1,0 +1,57 @@
+{
+  "name": "shooter-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "webpack",
+    "start": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FrederickMih/Shooter-Game.git"
+  },
+  "keywords": [],
+  "author": "Mih Frederick",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FrederickMih/Shooter-Game/issues"
+  },
+  "homepage": "https://github.com/FrederickMih/Shooter-Game#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.14.7",
+    "babel-eslint": "^10.1.0",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "copy-webpack-plugin": "^9.0.0",
+    "css-loader": "^5.2.6",
+    "eslint": "^7.29.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "html-loader": "^2.1.2",
+    "html-webpack-plugin": "^5.3.2",
+    "jest": "^27.0.5",
+    "jest-fetch-mock": "^3.0.3",
+    "mini-css-extract-plugin": "^2.0.0",
+    "style-loader": "^2.0.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^21.0.0",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "^3.19.0",
+    "webpack": "^5.42.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "@babel/core": "^7.14.6",
+    "babel-jest": "^27.0.5",
+    "babel-loader": "^8.2.2",
+    "babel-polyfill": "^6.26.0",
+    "lodash": "^4.17.21",
+    "node-fetch": "^2.6.1",
+    "phaser": "^3.54.0-dev",
+    "phaser-matter-collision-plugin": "^0.10.2",
+    "regenerator-runtime": "^0.13.7",
+    "webpack-merge": "^5.8.0"
+  }
+}
